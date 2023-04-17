@@ -21,7 +21,8 @@ const VideoDetails = () => {
       .then((data) => setVideos(data.items))
 
       ref?.current?.scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
+        block: 'center'
       })
 
   }, [id]);
