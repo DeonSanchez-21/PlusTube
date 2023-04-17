@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { categories } from '../utils/constants';
 
 const SideBar = ({selectedCategory, setSelectedCategory}) => {
@@ -14,9 +14,9 @@ const SideBar = ({selectedCategory, setSelectedCategory}) => {
               style={{  
                 margin: '10px 0',
                 justifyContent: 'start',
-                backgroundColor: category.name === selectedCategory && '#fc1503', color: 'white', borderRadius:'20px' 
+                backgroundColor: category.name === selectedCategory && '#28abfa', color: 'white', borderRadius:'20px' 
               }}>
-                <span style={{color: category.name === selectedCategory? 'white' : '#fc1503', marginRight: '10px'}}>
+                <span style={{color: category.name === selectedCategory? 'white' : '#28abfa', marginRight: '10px'}}>
                   {category.icon}
                 </span>
                 <span style={{opacity: category.name === selectedCategory? 1 : 0.8}}>

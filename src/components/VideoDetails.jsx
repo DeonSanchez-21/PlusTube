@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
@@ -11,6 +11,7 @@ const VideoDetails = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
+  const ref = useRef(null);
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
@@ -18,6 +19,11 @@ const VideoDetails = () => {
 
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
       .then((data) => setVideos(data.items))
+
+      ref?.current?.scrollIntoView({
+        behavior: 'smooth'
+      })
+
   }, [id]);
 
   if(!videoDetail?.snippet) return <Loader />;
@@ -35,7 +41,7 @@ const VideoDetails = () => {
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${channelId}`}>
-                <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" >
+                <Typography variant='h6'  color="#fff" >
                   {channelTitle}
                   <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                 </Typography>
@@ -52,6 +58,9 @@ const VideoDetails = () => {
           </Box>
         </Box>
         <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
+          <Typography id="recommended" ref={ref} variant='h4' mb={2} sx={{ fontWeight: 'bold', color: 'white'}}>
+            Recommended
+          </Typography>
           <Videos videos={videos} direction="column" />
         </Box>
       </Stack>

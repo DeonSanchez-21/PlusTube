@@ -1,8 +1,9 @@
 import { Box, Stack } from '@mui/material';
-import React, { useEffect } from 'react';
-import { ChannelCard, VideoCard } from './'
+import React from 'react';
+import { ChannelCard, VideoCard } from './';
 
 const Videos = ({videos, direction}) => {
+
 
   return (
     <Stack alignItems='center' justifyContent='center' flexWrap='wrap' direction={direction || "row"} gap={2}>

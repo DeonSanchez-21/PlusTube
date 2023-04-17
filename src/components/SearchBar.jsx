@@ -14,6 +14,8 @@ const SearchBar = () => {
     navigate(`/search/${searchTerm}`)
 
     setSearchTerm('')
+
+    window.document.body.style.zoom = 1;
   }
  
   return (
@@ -33,7 +35,7 @@ const SearchBar = () => {
         onChange={(e)=>setSearchTerm(e.target.value)}
         placeholder= "Search"
         value={searchTerm}/>
-        <IconButton sx={{p:'10px',color:'red'}} type='submit'>
+        <IconButton sx={{p:'10px',color:'#28abfa'}} type='submit'>
             <SearchIcon/>
         </IconButton>
     </Paper>
